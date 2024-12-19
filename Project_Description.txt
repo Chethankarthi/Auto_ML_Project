@@ -1,0 +1,73 @@
+Automated Machine Learning Application for Regression and Classification
+Introduction
+This project involves the development of an Automated Machine Learning (AutoML) Application that allows users to easily upload a configuration file and dataset, select a suitable machine learning model based on the problem type (regression or classification), and evaluate the performance of various models. The app uses Streamlit, a Python library for building interactive web applications, along with various machine learning techniques for preprocessing, feature selection, model selection, and hyperparameter tuning.
+
+Objective
+The objective of this project is to streamline the process of building and evaluating machine learning models for real-world datasets by automating tasks such as:
+
+Data preprocessing (handling missing values and scaling features),
+Feature selection based on various criteria,
+Model selection and evaluation,
+Hyperparameter tuning to optimize model performance.
+By creating a user-friendly interface, the application enables users to seamlessly upload configuration files and datasets, run machine learning models, and visualize the results without deep technical expertise.
+
+Key Components
+Streamlit Interface:
+
+The web-based app is built using Streamlit, which provides a simple and efficient way to create interactive user interfaces. The app allows users to upload a JSON configuration file and a CSV dataset.
+The configuration file contains information about the target column (dependent variable) and the prediction type (regression or classification).
+The dataset is preprocessed, with missing values handled, features selected or reduced based on the configuration, and models trained and evaluated.
+Model Selection:
+
+Based on the user-defined prediction type in the configuration file, the app selects a corresponding set of machine learning models:
+Regression models: Linear Regression, Random Forest Regressor, Support Vector Regression (SVR), Decision Tree Regressor, and K-Nearest Neighbors Regressor.
+Classification models: Random Forest Classifier, Support Vector Classifier (SVC), Decision Tree Classifier, and K-Nearest Neighbors Classifier.
+The models are chosen dynamically, ensuring that the appropriate algorithm is used based on the problem type.
+Data Preprocessing:
+
+Handling Missing Data: The app handles missing data by using imputation strategies. Numerical features are imputed with the mean, and categorical features are imputed with the most frequent value.
+Feature Selection: Based on the configuration file, features can be selected or reduced using different methods:
+Correlation with the target variable,
+Feature importance using tree-based methods (e.g., Random Forest),
+Principal Component Analysis (PCA) for dimensionality reduction.
+The data is then scaled for numerical features using StandardScaler to ensure that the model training is not biased due to varying scales of features.
+Model Training and Evaluation:
+
+The app splits the dataset into training and testing sets (80% train, 20% test).
+The models are trained using GridSearchCV to tune hyperparameters and find the best configuration.
+The performance of each model is evaluated using Mean Absolute Error (MAE) and R-squared (R²) metrics.
+The model with the highest R² score (for regression) is selected as the best model for the given dataset.
+Hyperparameter Tuning:
+
+Grid Search is used to optimize hyperparameters for certain models, such as the Random Forest Regressor. Hyperparameters like the number of estimators and the depth of trees are tested to find the best performing configuration.
+Ngrok and Localtunnel:
+
+The app is made publicly accessible using ngrok and localtunnel. Ngrok creates a secure tunnel to the app running locally, while localtunnel is used to expose the Streamlit application to the internet for remote access, enabling others to access the app easily.
+Workflow
+Step 1: Upload Configuration and Dataset:
+
+The user uploads a JSON configuration file that specifies the target column and prediction type (regression or classification), and a CSV dataset containing the features and target variable.
+Step 2: Data Preprocessing:
+
+The app processes the dataset by imputing missing values, selecting relevant features, and scaling numerical features.
+Step 3: Model Training:
+
+Based on the configuration, suitable machine learning models are trained on the preprocessed data. Grid search is applied for hyperparameter optimization.
+Step 4: Model Evaluation:
+
+The performance of each model is evaluated using MAE and R², and the best performing model is selected.
+Step 5: Display Results:
+
+The results are displayed on the Streamlit dashboard, showing the performance of each model and the best model for the given dataset.
+Technologies Used
+Python: Programming language used for the development of the application.
+Streamlit: A framework for building interactive, web-based applications.
+Scikit-learn: For machine learning algorithms, preprocessing, and model evaluation.
+Pyngrok: For creating a secure tunnel and making the application publicly accessible.
+Pandas: For handling and preprocessing the dataset.
+Numpy: For numerical operations.
+GridSearchCV: For hyperparameter optimization.
+Results and Conclusion
+The application successfully automates the end-to-end process of building machine learning models for both regression and classification tasks. It allows users to input a dataset and configuration, processes the data, and evaluates various machine learning models. By using this application, users can save time and effort in experimenting with different models and configurations, and focus on interpreting results and making informed decisions.
+
+The best model is determined based on R² for regression tasks and the evaluation metrics for classification tasks, providing an easy way to identify the most suitable model for a given problem.
